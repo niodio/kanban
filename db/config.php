@@ -5,5 +5,6 @@ const USER = 'admin';
 const PASS = 'admin';
 const DATABASE = 'db_kanban';
 
-//dns para db
+//dns para db.
+
 const DSN_MYSQL = 'mysql';
