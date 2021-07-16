@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Model;
+
 const HOST = 'localhost';
 const USER = 'admin';
 const PASS = 'admin';
