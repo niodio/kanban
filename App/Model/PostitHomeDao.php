@@ -8,14 +8,16 @@ use PDOException;
 
 require 'Connection.php';
 
-class ItemDao
+// Classe responsavel pelo crud
+
+class PostitHomeDao
 {
-	public $conn;
+	public $conecta;
 
 	public function __construct()
 	{
 		//Cria a instancia da conexao
-		$this->conn = new Connection();
+		$this->conecta = new Connection();
 	}
 
 	public function create()
@@ -34,34 +36,24 @@ class ItemDao
 
 	public function read()
 	{
-		$conecta = new Connection();
-		$objPdo = $conecta->returnConnection();
+		//$conecta = new Connection();
+		$objPdo = $this->conecta->returnConnection();
 
 		try {
-			//$consulta = $objPdo->query("SELECT * FROM tbl_kanban;");
-
 			$stmt = $objPdo->prepare("SELECT * FROM tbl_kanban;");
 
 			$stmt->execute();
 			$row = $stmt->fetch(PDO::FETCH_OBJ);
 
-			$objItem = new Item($row);
+			$objPostit = new Postit($row);
+			return $objPostit;
 
-			return $objItem;
-			// foreach ($row = $stmt->fetch(PDO::FETCH_OBJ) as $key => $value) {
-			// 	echo "<br>$key: $value<br><hr>";
-			// }
 
-			//var_dump($row);
+			//  foreach ($row = $stmt->fetch(PDO::FETCH_OBJ) as $key => $value) {
+			//  	echo "<br>$key: $value<br><hr>";
+			//  }
+			// var_dump($row);
 
-			// while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
-			// 	print_r($row =);
-			// 	echo '<br><hr>';
-			// }
-
-			// while ($linha = $stmt->fetch(PDO::FETCH_ASSOC)) {
-			// 	echo "<br><br>Nome: {$linha['titulo']} - Usuário: {$linha['descricao']}<br />";
-			// }
 		} catch (PDOException $e) {
 			echo 'Error: ' . $e->getMessage();
 		}
@@ -80,5 +72,5 @@ class ItemDao
 }
 
 echo $conn;
-$e = new ItemDao();
+$e = new PostitHomeDao();
 $e->read();

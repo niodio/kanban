@@ -2,8 +2,9 @@
 
 namespace App\Model;
 
+// Classe representativa do Postit
 
-class Item
+class Postit
 {
     private $id;
     private $titulo;
@@ -11,6 +12,11 @@ class Item
     private $data_cadastro;
     private $data_update;
     private $data_termino;
+
+    public function __construct(Postit $postit)
+    {
+        # code...
+    }
 
     /**
      * @return mixed

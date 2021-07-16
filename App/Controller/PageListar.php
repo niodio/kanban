@@ -2,9 +2,9 @@
 
 namespace App\Controller\Pages;
 
-use App\Model\ItemDao;
+use App\Model\PostitHomeDao;
 
-$objItemDao = new ItemDao();
+$objItemDao = new PostitHomeDao();
 $objItemDao->read();
 
 
